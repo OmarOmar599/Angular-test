@@ -2,9 +2,38 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
+    <style>
+      #HiHeader {
+        width: 100%;
+        padding: 50px 0;
+        text-align: center;
+        background-color: lightblue;
+        margin-top: 20px;
+        display: block;
+      }
+    </style>
+    <script src="angular.min.js"></script>
+    <script src="app.js"></script>
     <title>Hello World</title>
   </head>
-  <body>
+  <body ng-app="SayingHi" ng-controller='HiController'>
     <h1>This is the first header</h1>
+    <input type="text" id="sayhibytext" ng-model="name" ng-keyup="clickAppear();" onchange="ShowHiHeader()">
+    <button onclick="ShowHiHeader()" id="ShowHiHeader">Click to say Hi</button>
+    <h1 id="HiHeader">Just saying Hi</h1>
   </body>
 </html>
+<script type="text/javascript">
+  function ShowHiHeader(){
+    var hi = document.getElementById("HiHeader");
+    var texthi = document.getElementById("sayhibytext");
+    if (hi.style.display === "none" || texthi.value === "true") {
+      hi.style.display = "block";
+      this.textContent = "Click to remove Hi";
+    }
+    else {
+      hi.style.display = "none";
+      this.textContent = "Click to say Hi";
+    }
+  }
+</script>
