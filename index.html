@@ -18,22 +18,27 @@
   </head>
   <body ng-app="SayingHi" ng-controller='HiController'>
     <h1>This is the first header</h1>
-    <input type="text" id="sayhibytext" ng-model="name" ng-keyup="clickAppear();" onchange="ShowHiHeader()">
-    <button onclick="ShowHiHeader()" id="ShowHiHeader">Click to say Hi</button>
+    <div>Type true to say Hi: <input type="text" id="sayhibytext" ng-model="name" ng-keyup="clickAppear();" onchange="ShowHiHeader()"> <button onclick="ClearText()" id="clearBttn">Clear</button></div>
+    <br>
+    <button onclick="ShowHiHeader()" id="ShowHiHeaderBttn">Click to remove Hi</button>
     <h1 id="HiHeader">Just saying Hi</h1>
   </body>
 </html>
 <script type="text/javascript">
   function ShowHiHeader(){
     var hi = document.getElementById("HiHeader");
+    var bttn = document.getElementById("ShowHiHeaderBttn");
     var texthi = document.getElementById("sayhibytext");
     if (hi.style.display === "none" || texthi.value === "true") {
       hi.style.display = "block";
-      this.textContent = "Click to remove Hi";
+      bttn.innerHTML = "Click to remove Hi";
     }
     else {
       hi.style.display = "none";
-      this.textContent = "Click to say Hi";
+      bttn.innerHTML = "Click to say Hi";
     }
+  }
+  function ClearText(){
+    document.getElementById("sayhibytext").value = '';
   }
 </script>
